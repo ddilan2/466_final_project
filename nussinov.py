@@ -40,7 +40,7 @@ def find_secondary_structure(seq):
                         backtrace(dp, seq, k + 1, j) 
                         break
     L = len(seq)
-    if L == 1 or not optimal_base_pairings:
+    if dp[0][L - 1] == 0:
         return "." * L
     backtrace(dp, seq, 0, L - 1) 
     output_list = ['.' for _ in range(L)]
@@ -59,5 +59,5 @@ def nussinov(seq):
 #TODO: Make test file
 #Test Case 1:
 #seq = "AUGCGAU"
-seq = "AAAAA"
+seq = "AAAAAACA"
 nussinov(seq)
