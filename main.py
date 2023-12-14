@@ -8,25 +8,17 @@ def find_max_base_pairs(seq):
     dp = np.zeros((n, n))
     #Fill in the dp matrix
     
-    for k in range(1, n):
-        for i in range(n - k):
-            j = i + k
+    for diagonal_num in range(1, n):
+        for i in range(n - diagonal_num):
+            j = i + diagonal_num
             #(i, j) is correct for iterating through diagonals
             if j - i >= 0:
-                down = dp[i + 1][j]
-                left = dp[i][j - 1]
-                diag = dp[i + 1][j - 1] + int((seq[i], seq[j]) in pairs)
-                rc = max([dp[i][t] + dp[t + 1][j] for t in range(i, j)], default=0)
-            
-                dp[i, j] = max(down, left, diag, rc)
+                dp[i, j] = max(dp[i + 1][j], dp[i][j - 1], 
+                               dp[i + 1][j - 1] + int((seq[i], seq[j]) in pairs), 
+                               max([dp[i][k] + dp[k + 1][j] for k in range(i, j)], default=0))
         
     print(dp)
     return dp
-
-# TODO: Not implemented
-
-
-
 
 def find_secondary_structure(seq):
     dp = find_max_base_pairs(seq)
@@ -55,11 +47,12 @@ def find_secondary_structure(seq):
         output_list[i] = '('
         output_list[j] = ')'
     output_str = ''.join(output_list)
-    print('Optimal Base Pair: ' + output_str)
     return output_str
     
 #TODO: Hairpin loops with minimum length l
 
 #TODO: Make test file
+#Test Case 1:
 seq = "GGGAAAUCC"
-find_secondary_structure(seq)
+output_str = find_secondary_structure(seq)
+print('Optimal Base Pair: ' + output_str)
