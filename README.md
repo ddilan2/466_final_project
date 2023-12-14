@@ -15,7 +15,8 @@ in a given RNA sequence.
 
 
 
-To install and run the code, follow these steps:
+To install and run the code(for both Windows and Mac), 
+follow these steps below:
 
 1. Clone the repository to your local machine using
 git clone [repository_url] command.
