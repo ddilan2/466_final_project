@@ -21,10 +21,10 @@ def test_nussinov_one_base_pair():
     result3 = nussinov.nussinov(sequence3)
     assert result3 == "(.)."
 
-    sequence3 = "AGUG"
+    sequence3 = "AAGUG"
     result3 = nussinov.nussinov(sequence3)
-    assert result3 == "(.)."
-    
+    assert result3 == ".(.)."
+
     sequence4 = "GAAGU"
     result4 = nussinov.nussinov(sequence4)
     assert result4 == "..(.)"
