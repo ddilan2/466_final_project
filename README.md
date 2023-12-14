@@ -24,10 +24,10 @@ cd [project_directory] command.
 
 Installation:-
 
-Run pip install pytest to install pytest.
-Run pip install numpy to install numpy.
+1. Run pip install pytest to install pytest.
+2. Run pip install numpy to install numpy.
 
 How to run code:-
  
-To run main python file with nussinov, run python nussinov.py.
-To execute testing file, run pytest.
+1. To run main python file with nussinov, run python nussinov.py.
+2. To execute testing file, run pytest.
