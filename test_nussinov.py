@@ -46,5 +46,55 @@ def test_nussinov_multiple_base_pairs():
     result4 = nussinov.nussinov(sequence4)
     assert result4 == '.()().'
 
+#Note stem loops are examples of helices and loops
+def test_nussinov_helices():
+    #helix loops back on itself, symmetric
+    sequence1 = "AUGCAU"
+    assert nussinov.nussinov(sequence1) == '((()))'
+
+    sequence2 = "AGUCGCGCUACUCACUUUCUAGCGCGACU"
+    assert nussinov.nussinov(sequence2) == '((((((((((.(.).....))))))))))'
+
+    sequence3 = "ACGUGCAUUACGGCUAAGGAGCUUGGACCC GGGUCCAAGCUCCUUAGCCGUAAUGCACGU"
+    assert nussinov.nussinov(sequence3) == '(((((((((((((((((((((((((((((())))))))))))))))))))))))))))))'
+    #Add more helix test cases as needed
+def test_nussinov_loops():
+    #loop is a completely unpaired, single-stranded region
+    sequence1 = "AUGCGAU"
+    assert nussinov.nussinov(sequence1) == '((.()))'
+
+    sequence2 = "GAUCAC"
+    assert nussinov.nussinov(sequence2) == '(())..'
+
+    #Add more loop test cases as needed
+
+def test_nussinov_bulges():
+    #bulge is a type of non-helical region where there
+    #is an unpaired nucleotide or a small number of unpaired
+    #nucleotides, and this region interrupts an otherwise 
+    #helical structure
+    sequence1 = "AGGGCU"
+    assert nussinov.nussinov(sequence1) == '(..())'
+
+    sequence2 = "AAAGGGAAAAGAAAGGAAAGGGAAAGAAGAUUUGGGUUGUUGGGGUUGGUUUGGGUUGGUUUGGGUU"
+    assert nussinov.nussinov(sequence2) == '(((...((((.(((..(((...(((.((.()))...)).))....))..)))...))..)))...))'
+
+    #Add more bulge test cases as needed
+def test_nussinov_junctions():
+    sequence1 = "AUGCGAU"
+    assert nussinov.nussinov(sequence1) == '((.()))'
+
+    sequence2 = "GAUCAC"
+    assert nussinov.nussinov(sequence2) == '(())..'
+
+    #Add more junction test cases as needed
+def test_nussinov_pseudoknots():
+    sequence1 = "AUGCGAU"
+    assert nussinov.nussinov(sequence1) == '((.()))'
+
+    sequence2 = "GAUCAC"
+    assert nussinov.nussinov(sequence2) == '(())..'
+
+    #Add more pseudoknot test cases as needed
     
-    #code doesn't work when the RNA sequence has no base pairs
+    
