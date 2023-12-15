@@ -53,6 +53,8 @@ def find_secondary_structure(seq):
     return output_str
     
 def nussinov(seq):
+    if seq == '':
+        return seq
     output_str = find_secondary_structure(seq)
     print('Optimal Base Pair: ' + output_str)
     return output_str
