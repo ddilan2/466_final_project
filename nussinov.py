@@ -59,8 +59,12 @@ def nussinov(seq):
 
 if (len(sys.argv) == 2):
     user_input = sys.argv[1] # Gets the user input from command line
-    nussinov(user_input)
+    alphabet = ['A', 'U', 'C', 'G']
+    if any(char not in alphabet for char in user_input):
+        print("RNA sequence can only consist of nucleotide letters: A, U, C, G.")
+    else:
+        nussinov(user_input)
 elif (len(sys.argv) > 2):  # More than 1 RNA sequence input
-    print("Please only input one RNA sequence")
+    print("Please only input one RNA sequence.")
 else:
     print("Please add RNA sequence to command line argument.") # No RNA sequence input
