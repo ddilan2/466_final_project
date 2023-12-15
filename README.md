@@ -2,7 +2,7 @@
 
 This is the repo for the final project.
 
--Piotr Bel
+-Piotr Biel
 -Daniel Dilan
 -Diwakar Basak
 
