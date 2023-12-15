@@ -57,5 +57,10 @@ def nussinov(seq):
     print('Optimal Base Pair: ' + output_str)
     return output_str
 
-user_input = sys.argv[1] # Gets the user input from command line
-nussinov(user_input)
+if (len(sys.argv) == 2):
+    user_input = sys.argv[1] # Gets the user input from command line
+    nussinov(user_input)
+elif (len(sys.argv) > 2):  # More than 1 RNA sequence input
+    print("Please only input one RNA sequence")
+else:
+    print("Please add RNA sequence to command line argument.") # No RNA sequence input
