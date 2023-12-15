@@ -52,19 +52,19 @@ def test_nussinov_helices():
     sequence1 = "AUGCAU"
     assert nussinov.nussinov(sequence1) == '((()))'
 
-    sequence2 = "AGUCGCGCUACUCACUUUCUAGCGCGACU"
-    assert nussinov.nussinov(sequence2) == '((((((((((.(.).....))))))))))'
+    sequence2 = "AGUCGUCAGCAUGCUGACGACU"
+    assert nussinov.nussinov(sequence2) == '((((((((((()))))))))))'
 
-    sequence3 = "ACGUGCAUUACGGCUAAGGAGCUUGGACCC GGGUCCAAGCUCCUUAGCCGUAAUGCACGU"
+    sequence3 = "ACGUGCAUUACGGCUAAGGAGCUUGGACCCGGGUCCAAGCUCCUUAGCCGUAAUGCACGU"
     assert nussinov.nussinov(sequence3) == '(((((((((((((((((((((((((((((())))))))))))))))))))))))))))))'
     #Add more helix test cases as needed
 def test_nussinov_loops():
     #loop is a completely unpaired, single-stranded region
-    sequence1 = "AUGCGAU"
-    assert nussinov.nussinov(sequence1) == '((.()))'
+    sequence1 = "AAAAAGGG"
+    assert nussinov.nussinov(sequence1) == '........'
 
-    sequence2 = "GAUCAC"
-    assert nussinov.nussinov(sequence2) == '(())..'
+    sequence2 = "CCUUUCC"
+    assert nussinov.nussinov(sequence2) == '.......'
 
     #Add more loop test cases as needed
 
@@ -80,6 +80,7 @@ def test_nussinov_bulges():
     assert nussinov.nussinov(sequence2) == '(((...((((.(((..(((...(((.((.()))...)).))....))..)))...))..)))...))'
 
     #Add more bulge test cases as needed
+#TODO: Write test cases for below
 def test_nussinov_junctions():
     sequence1 = "AUGCGAU"
     assert nussinov.nussinov(sequence1) == '((.()))'
