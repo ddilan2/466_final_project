@@ -1,5 +1,6 @@
-# TODO: Not implemented
+
 import numpy as np
+import sys
 pairs = [('A', 'U'), ('U', 'A'), ('C', 'G'), ('G', 'C')]
 
 def find_max_base_pairs(seq):
@@ -16,7 +17,7 @@ def find_max_base_pairs(seq):
                 dp[i, j] = max(dp[i + 1][j], dp[i][j - 1], 
                                dp[i + 1][j - 1] + int((seq[i], seq[j]) in pairs), 
                                max([dp[i][k] + dp[k + 1][j] for k in range(i, j)], default=0))
-        
+    print("Scoring matrix for " + seq + ":") 
     print(dp)
     return dp
 
@@ -51,13 +52,10 @@ def find_secondary_structure(seq):
     output_str = ''.join(output_list)
     return output_str
     
-#TODO: Hairpin loops with minimum length l
 def nussinov(seq):
     output_str = find_secondary_structure(seq)
     print('Optimal Base Pair: ' + output_str)
     return output_str
-#TODO: Make test file
-#Test Case 1:
-#seq = "AUGCGAU"
-seq = "ACAGGCAAAAAUAAG"
-nussinov(seq)
+
+user_input = sys.argv[1] # Gets the user input from command line
+nussinov(user_input)
