@@ -79,6 +79,25 @@ def test_nussinov_bulges():
     sequence2 = "AAAGGGAAAAGAAAGGAAAGGGAAAGAAGAUUUGGGUUGUUGGGGUUGGUUUGGGUUGGUUUGGGUU"
     assert nussinov.nussinov(sequence2) == '(((...((((.(((..(((...(((.((.()))...)).))....))..)))...))..)))...))'
 
+def test_nussinov_helix_loop_combination():
+    # This tests a combination of helix (GGCC) followed by a loop (AAAA) and ending with another helix (GGCC)
+    sequence = "GGCCAAAACCGG"
+    expected_structure = "(())....(())"
+    assert nussinov.nussinov(sequence) == expected_structure
+
+def test_nussinov_helix_loop_bulge_combination():
+    # This tests a combination of helix (GGCC), loop (AAA), and a bulge (G) within another helix (GGCC)
+    sequence = "UGCCAAAAUGACCGG"
+    expected_structure = "(()(...()))(())"
+    assert nussinov.nussinov(sequence) == expected_structure
+
+def test_nussinov_complex_combination():
+    # This tests a complex structure with multiple helices, loops, and a bulge
+    sequence = "GGGAAACCCGGUUUGAAGCC"
+    expected_structure = "...(((.(()))))(..())"
+    assert nussinov.nussinov(sequence) == expected_structure
+
+
     #Add more bulge test cases as needed
 #TODO: Write test cases for below
 #Junctions are too complicated for Nussinov - would require 
