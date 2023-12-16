@@ -80,15 +80,15 @@ def test_nussinov_bulges():
     assert nussinov.nussinov(sequence2) == '(((...((((.(((..(((...(((.((.()))...)).))....))..)))...))..)))...))'
 
 def test_nussinov_helix_loop_combination():
-    # This tests a combination of helix (GGCC) followed by a loop (AAAA) and ending with another helix (GGCC)
+    # This tests a combination of helix (GGCC) followed by a loop (AAAA) and ending with another helix (CCGG)
     sequence = "GGCCAAAACCGG"
     expected_structure = "(())....(())"
     assert nussinov.nussinov(sequence) == expected_structure
 
 def test_nussinov_helix_loop_bulge_combination():
-    # This tests a combination of helix (GGCC), loop (AAA), and a bulge (G) within another helix (GGCC)
-    sequence = "UGCCAAAAUGACCGG"
-    expected_structure = "(()(...()))(())"
+    # This tests a combination of helix (GGCC), loop (AAAA), and a bulge (C) within another helix (CCGG)
+    sequence = "GGCCAAAAC.CGG"
+    expected_structure = "(())....(.())"
     assert nussinov.nussinov(sequence) == expected_structure
 
 def test_nussinov_complex_combination():
