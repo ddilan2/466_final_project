@@ -57,7 +57,6 @@ def test_nussinov_helices():
 
     sequence3 = "ACGUGCAUUACGGCUAAGGAGCUUGGACCCGGGUCCAAGCUCCUUAGCCGUAAUGCACGU"
     assert nussinov.nussinov(sequence3) == '(((((((((((((((((((((((((((((())))))))))))))))))))))))))))))'
-    #Add more helix test cases as needed
 def test_nussinov_loops():
     #loop is a completely unpaired, single-stranded region
     sequence1 = "AAAAAGGG"
@@ -66,7 +65,11 @@ def test_nussinov_loops():
     sequence2 = "CCUUUCC"
     assert nussinov.nussinov(sequence2) == '.......'
 
-    #Add more loop test cases as needed
+    sequence3 = "AAAACCCCCAAAA"
+    assert nussinov.nussinov(sequence3) == '.............'
+
+    sequence4 = "UUUUUUUUUUUUUUCCCCCCCCCCC"
+    assert nussinov.nussinov(sequence4) == '.........................'
 
 def test_nussinov_bulges():
     #bulge is a type of non-helical region where there
@@ -96,28 +99,3 @@ def test_nussinov_complex_combination():
     sequence = "GGGAAACCCGGUUUGAAGCC"
     expected_structure = "...(((.(()))))(..())"
     assert nussinov.nussinov(sequence) == expected_structure
-
-
-    #Add more bulge test cases as needed
-#TODO: Write test cases for below
-#Junctions are too complicated for Nussinov - would require 
-#more optimizations, also pseudoknots are already avoided in Nussinov
-"""
-def test_nussinov_junctions():
-    sequence1 = "AUGCGAU"
-    assert nussinov.nussinov(sequence1) == '((.()))'
-
-    sequence2 = "GAUCAC"
-    assert nussinov.nussinov(sequence2) == '(())..'
-
-    #Add more junction test cases as needed
-def test_nussinov_pseudoknots():
-    sequence1 = "AUGCGAU"
-    assert nussinov.nussinov(sequence1) == '((.()))'
-
-    sequence2 = "GAUCAC"
-    assert nussinov.nussinov(sequence2) == '(())..'
-
-    #Add more pseudoknot test cases as needed
-"""    
-    

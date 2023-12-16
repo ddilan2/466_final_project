@@ -1,9 +1,17 @@
 
 import numpy as np
 import sys
+
+# The valid base pairs for RNA sequences
 pairs = [('A', 'U'), ('U', 'A'), ('C', 'G'), ('G', 'C')]
 
+
 def find_max_base_pairs(seq):
+    """
+    find_max_base_pairs finds maximum amount of base pairs by filling in the dp matrix
+    :param seq: the RNA sequence input
+    """
+    
     n = len(seq)
     #Initialize the dp matrix to store max num of base pairs for each subsequence
     dp = np.zeros((n, n))
@@ -22,6 +30,11 @@ def find_max_base_pairs(seq):
     return dp
 
 def find_secondary_structure(seq):
+    """
+    find_secondary_structures finds the secondary structure using a backtrace that finds the optimal base_pairings
+    :param seq: the RNA sequence input
+    """
+
     dp = find_max_base_pairs(seq)
     #Find backtrace of dp matrix
     optimal_base_pairings = []
